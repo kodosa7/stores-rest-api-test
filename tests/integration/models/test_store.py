@@ -14,8 +14,7 @@ class StoreTest(BaseTest):
         with self.app_context():
             store = StoreModel('test')
 
-            self.assertIsNone(StoreModel.find_by_name('test',
-                                                      "Found a store name test"))
+            self.assertIsNone(StoreModel.find_by_name('test', "Found a store name test"))
 
             store.save_to_db()
 
@@ -38,6 +37,18 @@ class StoreTest(BaseTest):
             self.assertEqual(store.items.count(), 1)
             self.assertEqual(store.items.first().name, 'test_item')
 
+    def test_store_json(self):
+        with self.app_context():
+        store = StoreModel('test')
+        expected = {
+            'id': None,
+            'name': 'test',
+            'items': []
+        }
+
+        self.assertDictEqual(store.json(), expected)
+
+
     def test_store_json_with_item(self):
         with self.app_context():
             store = StoreModel('test')
@@ -47,6 +58,7 @@ class StoreTest(BaseTest):
             item.save_to_db()
 
             expected = {
+                'id': 1,
                 'name': 'test',
                 'items': [{'name': 'test_item', 'price': 19.99}]
             }
