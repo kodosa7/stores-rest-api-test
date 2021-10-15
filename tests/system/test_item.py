@@ -59,7 +59,7 @@ class ItemTest(BaseTest):
 
                 resp = client.post('/item/test', data={'price': 17.99, 'store_id': 1})
 
-                self.assertDictEqual(resp.status_code, 201)
+                self.assertEqual(resp.status_code, 201)
                 self.assertDictEqual({'name': 'test', 'price': 17.99},
                                      json.loads(resp.data))
 
@@ -72,7 +72,7 @@ class ItemTest(BaseTest):
 
                 resp = client.post('/item/test', data={'price': 17.99, 'store_id': 1})
 
-                self.assertDictEqual(resp.status_code, 400)
+                self.assertEqual(resp.status_code, 400)
                 self.assertDictEqual({'message': 'An item with name \'test\' already exists.'},
                                      json.loads(resp.data))
 

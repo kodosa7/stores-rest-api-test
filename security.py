@@ -21,6 +21,6 @@ def identity(payload):
     :param payload: A dictionary with 'identity' key, which is the user id.
     :return: A UserModel object.
     """
-    user_id = payload('identity')
+    user_id = payload['identity']
     return UserModel.find_by_id(user_id)
 
