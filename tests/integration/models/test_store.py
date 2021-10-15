@@ -38,7 +38,6 @@ class StoreTest(BaseTest):
             self.assertEqual(store.items.first().name, 'test_item')
 
     def test_store_json(self):
-        with self.app_context():
         store = StoreModel('test')
         expected = {
             'id': None,
