@@ -7,8 +7,7 @@ import json
 
 class ItemTest(BaseTest):
     def setUp(self):
-        super(ItemTest, self).setUp
-
+        super(ItemTest, self).setUp()
         with self.app() as client:
             with self.app_context():
                 UserModel('test', '1234').save_to_db()
