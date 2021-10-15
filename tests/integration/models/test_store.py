@@ -14,17 +14,17 @@ class StoreTest(BaseTest):
         with self.app_context():
             store = StoreModel('test')
 
-            self.assertIsNone(StoreModel.find_by_name('test', "Found a store name test"))
+            self.assertIsNone(StoreModel.find_by_name('test'), "Found a store name test")
 
             store.save_to_db()
 
-            self.assertIsNotNone(StoreModel.find_by_name('test',
-                                                         "Didn't find a store name"))
+            self.assertIsNotNone(StoreModel.find_by_name('test'),
+                                                         "Didn't find a store name")
 
             store.delete_from_db()
 
-            self.assertIsNone(StoreModel.find_by_name('test'
-                                                      "blah blah"))
+            self.assertIsNone(StoreModel.find_by_name('test'),
+                                                      "blah blah")
 
     def test_store_relationship(self):
         with self.app_context():

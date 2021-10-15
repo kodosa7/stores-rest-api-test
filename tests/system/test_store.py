@@ -11,7 +11,7 @@ class StoreTest(BaseTest):
 
                 self.assertEqual(resp.status_code, 201)
                 self.assertIsNotNone(StoreModel.find_by_name('test'))
-                self.assertDictEqual({'id': 1, name': 'test', 'items': []},
+                self.assertDictEqual({'id': 1, 'name': 'test', 'items': []},
                                      json.loads(resp.data))
 
     def create_duplicate_store(self):
